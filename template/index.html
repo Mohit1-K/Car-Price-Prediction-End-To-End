@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>Car Price Prediction</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+<style>
+    html, body {
+    display: flex;
+    justify-content: center;
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 15px;
+    }
+
+    .fa {
+  padding: 30px;
+  margin-top: 10px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+
+.fa-pinterest {
+  background: #cb2027;
+  color: white;
+}
+
+.fa-snapchat-ghost {
+  background: #fffc00;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.fa-skype {
+  background: #00aff0;
+  color: white;
+}
+
+.fa-android {
+  background: #a4c639;
+  color: white;
+}
+
+.fa-dribbble {
+  background: #ea4c89;
+  color: white;
+}
+
+.fa-vimeo {
+  background: #45bbff;
+  color: white;
+}
+
+.fa-tumblr {
+  background: #2c4762;
+  color: white;
+}
+
+.fa-vine {
+  background: #00b489;
+  color: white;
+}
+
+.fa-foursquare {
+  background: #45bbff;
+  color: white;
+}
+
+.fa-stumbleupon {
+  background: #eb4924;
+  color: white;
+}
+
+.fa-flickr {
+  background: #f40083;
+  color: white;
+}
+
+.fa-yahoo {
+  background: #430297;
+  color: white;
+}
+
+.fa-soundcloud {
+  background: #ff5500;
+  color: white;
+}
+
+.fa-reddit {
+  background: #ff5700;
+  color: white;
+}
+
+.fa-rss {
+  background: #ff6600;
+  color: white;
+}
+
+    form {
+    border: 5px solid #f1f1f1;
+    }
+    input[type=text], input[type=password] {
+    width: 100%;
+    padding: 16px 8px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    }
+    .icon {
+    font-size: 110px;
+    display: flex;
+    justify-content: center;
+    color: #4286f4;
+    }
+    button {
+    background-color: #4286f4;
+    color: white;
+    padding: 14px 0;
+    margin: 10px 0;
+    border: none;
+    cursor: grab;
+    width: 48%;
+    }
+    h1 {
+    text-align:center;
+    font-size:18;
+    }
+    button:hover {
+    opacity: 0.8;
+    }
+    .formcontainer {
+    text-align: center;
+    margin: 24px 50px 12px;
+    }
+    .container {
+    padding: 16px 0;
+    text-align:left;
+    }
+    span.psw {
+    float: right;
+    padding-top: 0;
+    padding-right: 15px;
+    }
+    /* Change styles for span on extra small screens */
+    @media screen and (max-width: 300px) {
+    span.psw {
+    display: block;
+    float: none;
+    }
+</style>
+</head>
+
+<body style="color: rgb(0, 29, 43); background-image: linear-gradient(to bottom right, rgb(2, 51, 143), rgb(12, 199, 96)) "  ;>
+
+    <div class="formcontainer">
+    
+        <form action="{{ url_for('analyze')}}" method="post">
+            <div class="container">
+            <h1 style = "color: rgb(209, 255, 4);">Predict Car Price</h1>
+            <h5 style = "text-align: center; color: rgb(209, 255, 4);">Created By Mohit Kumar</h5>
+            
+            <h3>Year (In which year you bought this car?)</h3>
+            <input style="height: 35px;" id="first" name="Year" type="number ">
+            <h3>What is the Showroom Price?(In lakhs example: 5.5, 2.5, 3)</h3><br><input style="height: 35px;" id="second" name="Present_Price" required="required">
+            <h3>How Many Kilometers Drived?</h3><input style="height: 35px;" id="third" name="Kms_Driven" required="required">
+            <h3>How much owners previously had the car(0 or 1 or 3) ?</h3><br><input style="height: 35px;" id="fourth" name="Owner" required="required">
+            <h3>What Is the Fuel type?</h3><br><select style="height: 35px;" name="Fuel_Type" id="fuel" required="required">
+                <option value="Petrol">Petrol</option>
+                <option value="Diesel">Diesel</option>
+                <option value="Diesel">CNG</option>
+            </select>
+            <h3>Are you A Dealer or Individual</h3><br><select style="height: 35px;" name="Seller_Type" id="resea" required="required">
+                <option value="Dealer">Dealer</option>
+                <option value="Individual">Individual</option>
+            </select>
+            <h3>Transmission type</h3><br><select style="height: 35px;" name="Transmission" id="research" required="required">
+                <option value="Mannual">Manual Car</option>
+                <option value="Automatic">Automatic Car</option>
+            </select>
+            <br><br><button type="submit" style="background-color: rgb(3, 32, 94);"><strong>Predict</strong></button>
+            <br>
+            
+            </div>
+
+
+
+
+        </form>
+
+
+        <a style="font-style: inherit; padding: 30px; text-align: center;" href="https://www.linkedin.com/in/mohit-kumar-26a1261b2" class="fa fa-linkedin">in</a>
+
+
+
+        <br><br><h3>{{ prediction_text }}<h3>
+    </div>
+
+
+
+
+    
+</body>
+
+</html>
